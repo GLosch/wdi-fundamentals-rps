@@ -22,28 +22,35 @@ function randomPlay() {
 ////////////////////////////////////////////////
 
 function getPlayerMove(move) {
-	if(move!===null){
-		return move;
-	} else {
-		return getInput();
-	}
+	// move = null;
+
+	// if(move!==null){
+	// 	return move;
+	// } else {
+	// 	return getInput();
+	// }
+	return move || getInput();
 
     // Write an expression that operates on a variable called `move`
     // If a `move` has a value, your expression should evaluate to that value.
     // However, if `move` is not specified / is null, your expression should equal `getInput()`.
-    /* Your Expression */;
+    /* Your Expression */
 }
 
 function getComputerMove(move) {
-    if(move!===null){
-		return move;
-	} else {
-		return getInput();
-	}
+	// move=null;
+
+ //    if(move!==null){
+	// 	return move;
+	// } else {
+	// 	return randomPlay();
+	// }
+
+	return move || randomPlay();
     // Write an expression that operates on a variable called `move`
     // If a `move` has a value, your expression should evaluate to that value.
     // However, if `move` is not specified / is null, your expression should equal `randomPlay()`.
-    /* Your Expression */;
+    /* Your Expression */
 }
 
 function getWinner(playerMove,computerMove) {
@@ -81,6 +88,22 @@ function playToFive() {
     var computerWins = 0;
     // Write code that plays 'Rock, Paper, Scissors' until either the player or the computer has won five times.
     /* YOUR CODE HERE */
+    while(playerWins<5 && computerWins<5) {
+    	var result = getWinner(getPlayerMove(), getComputerMove());
+    	if(result == 'player'){
+    		playerWins++;
+    		console.log("player wins!");
+    		console.log("The score is now " + playerWins + " wins for Player against " + computerWins + " for Computer");
+    	} else if(result == 'computer'){
+    		computerWins++;
+    		console.log("computer wins!");
+    		console.log("The score is now " + playerWins + " wins for Player against " + computerWins + " for Computer");
+    	} else {
+    	    console.log("it's a tie!");
+    	}
+    }
+
     return [playerWins, computerWins];
 }
 
+playToFive();
